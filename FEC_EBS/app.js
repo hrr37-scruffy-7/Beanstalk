@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./index');
 let cors = require('cors');
+const path = require('path');
 const app = express();
+
 
 // mongoose.connect('localhost:5002');
 
@@ -17,13 +19,20 @@ app.use(express.static('index.html'));
 //   res.send('Hello World');
 // });
 
-//Get request for html page to render
-app.get('/:id', (req, res)=> {
-  console.log(req.params.id);
-  res.sendFile('/var/app/current/index.html');
+//Get request for html page to render on homepage
+
+app.get('/', (req, res)=> {
+  let getPath = path.join(__dirname, 'index.html');
+  res.sendFile(getPath);
 });
-///var/app/current/index.html
-///Users/umaabrami/Downloads/EBS trial/FEC_EBS/index.html
+
+//Get request for html page to render at endpoint
+
+app.get('/:id', (req, res)=> {
+  let getPath = path.join(__dirname, 'index.html');
+  res.sendFile(getPath);
+});
+
 //Get request to get database images based on id
 app.get('/images/:id', (req, res)=> {
   console.log(req.params.id);
