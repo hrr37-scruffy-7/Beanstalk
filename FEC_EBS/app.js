@@ -22,7 +22,8 @@ app.get('/:id', (req, res)=> {
   console.log(req.params.id);
   res.sendFile('/var/app/current/index.html');
 });
-
+///var/app/current/index.html
+///Users/umaabrami/Downloads/EBS trial/FEC_EBS/index.html
 //Get request to get database images based on id
 app.get('/images/:id', (req, res)=> {
   console.log(req.params.id);
